@@ -1,0 +1,80 @@
+syntax = "proto3";
+package sqlite_wasm.notes.v1;
+option go_package = "github.com/IEP/sqlite-wasm/gen/go/notes/v1";
+
+import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/empty.proto";
+
+message Note {
+  int64 id = 1;
+  string name = 2;
+  optional string content = 3;
+}
+
+// Get
+message GetNoteRequest {
+  int64 id = 1;
+}
+
+// List
+message ListNotesRequest {
+  optional string filter = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListNotesResponse {
+  repeated Note notes = 1;
+  string next_page_token = 2;
+}
+
+// Create
+message CreateNoteRequest {
+  string name = 1;
+  optional string content = 2;
+}
+
+// Update
+message UpdateNoteRequest {
+  Note note = 1;
+}
+
+// Delete
+message DeleteNoteRequest {
+  uint64 id = 1;
+}
+
+service NoteService {
+  rpc GetNote(GetNoteRequest) returns (Note) {
+    option (google.api.http) = {
+      get: "/api/v1/notes/{id}"
+    };
+  }
+
+  rpc ListNotes(ListNotesRequest) returns (ListNotesResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/notes"
+    };
+  }
+
+  rpc CreateNote(CreateNoteRequest) returns (Note) {
+    option (google.api.http) = {
+      post: "/api/v1/notes"
+      body: "*"
+    };
+  }
+
+  rpc UpdateNote(UpdateNoteRequest) returns (Note) {
+    option (google.api.http) = {
+      put: "/api/v1/notes/{note.id=*}"
+      body: "note"
+    };
+  }
+
+  rpc DeleteNote(DeleteNoteRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/api/v1/notes/{id}"
+    };
+  }
+}
