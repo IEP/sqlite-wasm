@@ -79,11 +79,16 @@ func (c *GRPCService) ListNotes(ctx context.Context, req *pb.ListNotesRequest) (
 		offset = 0
 	}
 	pageSize := req.PageSize
-	if pageSize < 1 {
-		pageSize = 1
+	if pageSize < 10 {
+		pageSize = 10
+	}
+	filter := ""
+	if req.GetFilter() != "" {
+		filter = "%" + req.GetFilter() + "%"
 	}
 
 	ns, err := c.repo.ListNotes(ctx, notes.ListNotesParams{
+		Filter: filter,
 		Limit:  int64(pageSize),
 		Offset: int64(offset),
 	})

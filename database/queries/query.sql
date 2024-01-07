@@ -6,9 +6,12 @@ select * from note where id = ? limit 1;
 -- name: ListNotes :many
 select *
 from note
+where
+    coalesce(cast(@filter as text), '') = '' or
+    (name like @filter or content like @filter)
 order by id
-limit ?
-offset ?;
+limit @limit
+offset @offset;
 
 -- name: CreateNote :one
 insert into note (

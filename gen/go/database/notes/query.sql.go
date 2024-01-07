@@ -68,18 +68,22 @@ func (q *Queries) GetNote(ctx context.Context, id int64) (Note, error) {
 const listNotes = `-- name: ListNotes :many
 select id, name, content, created_at, updated_at
 from note
+where
+    coalesce(cast(?1 as text), '') = '' or
+    (name like ?1 or content like ?1)
 order by id
-limit ?
-offset ?
+limit ?3
+offset ?2
 `
 
 type ListNotesParams struct {
-	Limit  int64
+	Filter string
 	Offset int64
+	Limit  int64
 }
 
 func (q *Queries) ListNotes(ctx context.Context, arg ListNotesParams) ([]Note, error) {
-	rows, err := q.db.QueryContext(ctx, listNotes, arg.Limit, arg.Offset)
+	rows, err := q.db.QueryContext(ctx, listNotes, arg.Filter, arg.Offset, arg.Limit)
 	if err != nil {
 		return nil, err
 	}
