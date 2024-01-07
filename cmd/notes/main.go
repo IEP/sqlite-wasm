@@ -38,7 +38,7 @@ func main() {
 	if grpcPort == "" {
 		grpcPort = "8001"
 	}
-	port := os.Getenv("PORT")
+	port := os.Getenv("HTTP_PORT")
 	if port == "" {
 		port = "8000"
 	}
