@@ -20,11 +20,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	NoteService_GetNote_FullMethodName    = "/sqlite_wasm.notes.v1.NoteService/GetNote"
-	NoteService_ListNotes_FullMethodName  = "/sqlite_wasm.notes.v1.NoteService/ListNotes"
-	NoteService_CreateNote_FullMethodName = "/sqlite_wasm.notes.v1.NoteService/CreateNote"
-	NoteService_UpdateNote_FullMethodName = "/sqlite_wasm.notes.v1.NoteService/UpdateNote"
-	NoteService_DeleteNote_FullMethodName = "/sqlite_wasm.notes.v1.NoteService/DeleteNote"
+	NoteService_GetNote_FullMethodName    = "/notes.v1.NoteService/GetNote"
+	NoteService_ListNotes_FullMethodName  = "/notes.v1.NoteService/ListNotes"
+	NoteService_CreateNote_FullMethodName = "/notes.v1.NoteService/CreateNote"
+	NoteService_UpdateNote_FullMethodName = "/notes.v1.NoteService/UpdateNote"
+	NoteService_DeleteNote_FullMethodName = "/notes.v1.NoteService/DeleteNote"
 )
 
 // NoteServiceClient is the client API for NoteService service.
@@ -229,7 +229,7 @@ func _NoteService_DeleteNote_Handler(srv interface{}, ctx context.Context, dec f
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var NoteService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "sqlite_wasm.notes.v1.NoteService",
+	ServiceName: "notes.v1.NoteService",
 	HandlerType: (*NoteServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

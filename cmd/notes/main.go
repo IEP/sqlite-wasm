@@ -11,7 +11,7 @@ import (
 	"github.com/IEP/sqlite-wasm/database/migrations"
 	"github.com/IEP/sqlite-wasm/database/migrations/sqlite3"
 	pb "github.com/IEP/sqlite-wasm/gen/go/protos/notes/v1"
-	"github.com/IEP/sqlite-wasm/internal/notes"
+	notesSvc "github.com/IEP/sqlite-wasm/internal/notes"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/source/iofs"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
@@ -21,6 +21,7 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/grpc/reflection"
 )
 
 func main() {
@@ -52,7 +53,7 @@ func main() {
 	dbMigrate(db)
 
 	// start - init services
-	svc := notes.NewNotesGRPCService(db)
+	svc := notesSvc.NewNotesGRPCService(db)
 	// end - init services
 
 	g, ctx := errgroup.WithContext(ctx)
@@ -66,6 +67,7 @@ func main() {
 		}
 		grpcServer := grpc.NewServer()
 		pb.RegisterNoteServiceServer(grpcServer, svc)
+		reflection.Register(grpcServer)
 		if err := grpcServer.Serve(l); err != nil {
 			return err
 		}

@@ -287,7 +287,7 @@ func RegisterNoteServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/sqlite_wasm.notes.v1.NoteService/GetNote", runtime.WithHTTPPathPattern("/api/v1/notes/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/notes.v1.NoteService/GetNote", runtime.WithHTTPPathPattern("/api/v1/notes/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -312,7 +312,7 @@ func RegisterNoteServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/sqlite_wasm.notes.v1.NoteService/ListNotes", runtime.WithHTTPPathPattern("/api/v1/notes"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/notes.v1.NoteService/ListNotes", runtime.WithHTTPPathPattern("/api/v1/notes"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -337,7 +337,7 @@ func RegisterNoteServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/sqlite_wasm.notes.v1.NoteService/CreateNote", runtime.WithHTTPPathPattern("/api/v1/notes"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/notes.v1.NoteService/CreateNote", runtime.WithHTTPPathPattern("/api/v1/notes"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -362,7 +362,7 @@ func RegisterNoteServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/sqlite_wasm.notes.v1.NoteService/UpdateNote", runtime.WithHTTPPathPattern("/api/v1/notes/{note.id=*}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/notes.v1.NoteService/UpdateNote", runtime.WithHTTPPathPattern("/api/v1/notes/{note.id=*}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -387,7 +387,7 @@ func RegisterNoteServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/sqlite_wasm.notes.v1.NoteService/DeleteNote", runtime.WithHTTPPathPattern("/api/v1/notes/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/notes.v1.NoteService/DeleteNote", runtime.WithHTTPPathPattern("/api/v1/notes/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -451,7 +451,7 @@ func RegisterNoteServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/sqlite_wasm.notes.v1.NoteService/GetNote", runtime.WithHTTPPathPattern("/api/v1/notes/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/notes.v1.NoteService/GetNote", runtime.WithHTTPPathPattern("/api/v1/notes/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -473,7 +473,7 @@ func RegisterNoteServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/sqlite_wasm.notes.v1.NoteService/ListNotes", runtime.WithHTTPPathPattern("/api/v1/notes"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/notes.v1.NoteService/ListNotes", runtime.WithHTTPPathPattern("/api/v1/notes"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -495,7 +495,7 @@ func RegisterNoteServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/sqlite_wasm.notes.v1.NoteService/CreateNote", runtime.WithHTTPPathPattern("/api/v1/notes"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/notes.v1.NoteService/CreateNote", runtime.WithHTTPPathPattern("/api/v1/notes"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -517,7 +517,7 @@ func RegisterNoteServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/sqlite_wasm.notes.v1.NoteService/UpdateNote", runtime.WithHTTPPathPattern("/api/v1/notes/{note.id=*}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/notes.v1.NoteService/UpdateNote", runtime.WithHTTPPathPattern("/api/v1/notes/{note.id=*}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -539,7 +539,7 @@ func RegisterNoteServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/sqlite_wasm.notes.v1.NoteService/DeleteNote", runtime.WithHTTPPathPattern("/api/v1/notes/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/notes.v1.NoteService/DeleteNote", runtime.WithHTTPPathPattern("/api/v1/notes/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

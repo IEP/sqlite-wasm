@@ -1,5 +1,5 @@
 syntax = "proto3";
-package sqlite_wasm.notes.v1;
+package notes.v1;
 option go_package = "github.com/IEP/sqlite-wasm/gen/go/notes/v1";
 
 import "google/api/annotations.proto";
